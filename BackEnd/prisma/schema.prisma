@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  username     String     @unique
+  email        String     @unique
+  isReviewer Boolean @default(false)
+  passwordHash String     @map("password_hash")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  roles        UserRole[]
+  speedruns    Speedrun[] @relation("SpeedrunUser")
+  reviews      Speedrun[] @relation("SpeedrunReviewer")
+}
+
+model Role {
+  id       Int        @id @default(autoincrement())
+  name     String     @unique
+  users    UserRole[]
+}
+
+model UserRole {
+  user     User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   Int
+  role     Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  roleId   Int
+
+  @@id([userId, roleId])
+}
+
+model Game {
+  id           Int        @id @default(autoincrement())
+  title        String
+  releaseYear  Int?       @map("release_year")
+  platform     String?
+  speedruns    Speedrun[]
+}
+
+model Category {
+  id        Int        @id @default(autoincrement())
+  name      String
+  speedruns Speedrun[]
+}
+
+model Speedrun {
+  id           Int       @id @default(autoincrement())
+  user         User?     @relation("SpeedrunUser", fields: [userId], references: [id], onDelete: SetNull)
+  userId       Int?
+  reviewer     User?     @relation("SpeedrunReviewer", fields: [reviewerId], references: [id], onDelete: SetNull)
+  reviewerId   Int?
+  game         Game      @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  gameId       Int
+  category     Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId   Int
+  timeSeconds  Int       @map("time_seconds")
+  videoUrl     String?   @map("video_url")
+  submittedAt  DateTime  @default(now()) @map("submitted_at")
+  accepted     Boolean?
+}
+

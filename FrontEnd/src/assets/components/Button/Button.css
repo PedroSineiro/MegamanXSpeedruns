@@ -1,0 +1,22 @@
+.custom-button {
+  background-color: #8a529b;
+  color: rgb(150, 252, 120);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  border: 1px solid rgb(90, 184, 61);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: min-content;
+  height: min-content;
+}
+
+.custom-button:hover {
+  background-color: #a365b1;
+  border-color: rgb(150, 252, 120);
+}
+
+.custom-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

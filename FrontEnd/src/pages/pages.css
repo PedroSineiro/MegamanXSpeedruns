@@ -1,0 +1,18 @@
+.link a {
+  color: rgb(90, 184, 61);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 300ms;
+}
+
+.link a:hover {
+  color: rgb(150, 252, 120);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.game-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

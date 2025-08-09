@@ -1,0 +1,26 @@
+.custom-select-container {
+  margin-bottom: 1rem;
+}
+
+.custom-select-label {
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.custom-select {
+  background-color: #8a529b;
+  color: rgb(150, 252, 120);
+  font-family: 'Press Start 2P', cursive;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid rgb(90, 184, 61);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.custom-select:focus {
+  border-color: rgb(150, 252, 120);
+}

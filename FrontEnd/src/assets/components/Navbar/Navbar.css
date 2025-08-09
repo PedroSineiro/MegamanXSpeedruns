@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a1f44; /* azul escuro */
+  padding: 1rem 2rem;
+}
+
+.logo {
+  height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+.nav-links a {
+  color: rgb(90, 184, 61);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 300ms;
+}
+
+.nav-links a:hover {
+  color: rgb(150, 252, 120);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #bd3030; /* Cor padrão do texto */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logout-btn:hover {
+  color: #ff505e; /* Cor ao passar o mouse (ex: vermelho suave) */
+}
